@@ -42,8 +42,8 @@ export default function HighlightForm({
     );
   };
 
+  // TODO how to force onsubmit to also submit both comment and reaction
   return (
-    // TODO how to force onsubmit to also submit both comment and reaction
     <form onSubmit={handleSubmit} onClick={(e) => e.preventDefault()}>
       {renderSelectReaction()}
       {renderCommentInput()}
