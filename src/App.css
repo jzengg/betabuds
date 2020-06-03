@@ -71,6 +71,7 @@ ul,
 blockquote,
 pre,
 code {
+  letter-spacing: -0.003em;
   line-height: 1.5em;
   margin-bottom: 1.5em;
 }
@@ -85,14 +86,13 @@ code {
 
 @media (min-width: 768px) {
   .preview-content {
-    line-height: 180%;
-    font-size: 20px;
+    font-size: 21px;
   }
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
   .preview-content {
-    font-size: 12px;
+    font-size: 18px;
   }
 }
 
