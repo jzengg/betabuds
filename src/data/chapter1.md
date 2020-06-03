@@ -1,5 +1,3 @@
-# Harry Potter and the Philosopher's Stone
-
 ## Chapter 1 - The Boy Who Lived
 
 Mr. and Mrs. Dursley, of number four, Privet Drive,
@@ -16,6 +14,6 @@ very large mustache. Mrs. Dursley was thin and
 blonde and had nearly twice the usual amount of
 neck, which came in very useful as she spent so
 much of her time craning over garden fences, spying
-on the neighbors. The Dursley s had a small son
+on the neighbors. The Dursleys had a small son
 called Dudley and in their opinion there was no finer
 boy anywhere.

@@ -10,6 +10,11 @@ import {
 } from "../services/highlights";
 import { useStateWithLocalStorage } from "../services/localStorage";
 
+const sampleBookData = {
+  title: "Harry Potter and the Philosopher's Stone",
+  author: "J.K. Rowling",
+};
+
 export default function Chapter() {
   const LOCAL_STORAGE_KEY = "bbHighlights";
   const HIGHLIGHT_CLASS = "bbHighlighted";
@@ -75,6 +80,7 @@ export default function Chapter() {
     ];
     setHighlights(newState);
     setCurrentHighlightId(null);
+    resetCurrentSelection();
   };
 
   const getCurrentHighlight = () => {
@@ -128,7 +134,7 @@ export default function Chapter() {
 
   // if there is a currentSelectionId, we should be showing the highlight form
   return (
-    <>
+    <main className="chapter-container">
       {selection && (
         <button onClick={createHighlightFromCurrentSelection}>
           start highlight
@@ -143,16 +149,21 @@ export default function Chapter() {
         />
       )}
 
-      <div
+      <section>
+        <h1>{sampleBookData.title}</h1>
+        <address>{sampleBookData.author}</address>
+      </section>
+
+      <section
         className="preview-container"
         onClick={handleMaybeClickHighlight}
         onMouseUp={saveCurrentSelection}
         onMouseDown={resetCurrentSelection}
       >
-        <div className="preview-content" ref={previewRef}>
+        <article className="preview-content" ref={previewRef}>
           <ReactMarkdown source={preview} />
-        </div>
-      </div>
-    </>
+        </article>
+      </section>
+    </main>
   );
 }
