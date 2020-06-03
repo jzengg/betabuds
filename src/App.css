@@ -79,13 +79,21 @@ code {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 768px;
+  max-width: 680px;
   padding: 15px;
 }
 
-.preview-content {
-  line-height: 180%;
-  font-size: 20px;
+@media (min-width: 768px) {
+  .preview-content {
+    line-height: 180%;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .preview-content {
+    font-size: 12px;
+  }
 }
 
 .bbHighlighted {
