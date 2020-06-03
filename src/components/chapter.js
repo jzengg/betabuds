@@ -113,6 +113,7 @@ export default function Chapter() {
 
   const resetCurrentSelection = (e) => {
     window.getSelection().removeAllRanges();
+    setSelection(null);
   };
 
   const createHighlightFromCurrentSelection = () => {
@@ -124,7 +125,7 @@ export default function Chapter() {
       { selectionStart, selectionEnd, highlightId },
     ];
     setHighlights(newState);
-    setSelection(null);
+    resetCurrentSelection();
     setCurrentHighlightId(highlightId);
   };
 
