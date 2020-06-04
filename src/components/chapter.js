@@ -31,6 +31,22 @@ export default function Chapter() {
   const previewRef = useRef();
 
   useEffect(() => {
+    document.addEventListener("selectionchange", handleSelectionChange);
+    return () => {
+      document.removeEventListener("selectionchange", handleSelectionChange);
+    };
+  }, []);
+
+  const handleSelectionChange = (e) => {
+    if (hasSelection()) {
+      const selectionOffsets = getSelectionOffsets(previewRef.current);
+      setSelection({ ...selectionOffsets });
+    } else {
+      setSelection(null);
+    }
+  };
+
+  useEffect(() => {
     fetch(chapter1)
       .then((response) => {
         return response.text();
@@ -91,6 +107,7 @@ export default function Chapter() {
   };
 
   const handleMaybeClickHighlight = (e) => {
+    e.preventDefault();
     const classes = [...e.target.classList];
     if (classes.includes(HIGHLIGHT_CLASS)) {
       const highlightId = classes.find((className) =>
@@ -99,15 +116,6 @@ export default function Chapter() {
       setCurrentHighlightId(highlightId);
     } else {
       setCurrentHighlightId(null);
-    }
-  };
-
-  const saveCurrentSelection = (e) => {
-    if (hasSelection()) {
-      const selectionOffsets = getSelectionOffsets(previewRef.current);
-      setSelection({ ...selectionOffsets });
-    } else {
-      setSelection(null);
     }
   };
 
@@ -158,8 +166,6 @@ export default function Chapter() {
       <section
         className="preview-container"
         onClick={handleMaybeClickHighlight}
-        onMouseUp={saveCurrentSelection}
-        onMouseDown={resetCurrentSelection}
       >
         <article className="preview-content" ref={previewRef}>
           <ReactMarkdown source={preview} />
