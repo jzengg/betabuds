@@ -150,7 +150,7 @@ export default function Chapter() {
         />
       )}
 
-      <section>
+      <section className="book-header">
         <h1>{sampleBookData.title}</h1>
         <address>{sampleBookData.author}</address>
       </section>

@@ -50,7 +50,7 @@ h2,
 h3 {
   color: rgba(0, 0, 0, 0.84);
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -59,10 +59,6 @@ h1 {
 
 h2 {
   font-size: 1.2em;
-}
-
-section {
-  margin-bottom: 30px;
 }
 
 p,
@@ -76,12 +72,18 @@ code {
   margin-bottom: 1.5em;
 }
 
+.book-header address {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .chapter-container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   max-width: 680px;
-  padding: 15px;
+  padding: 15px 24px;
 }
 
 @media (min-width: 768px) {
