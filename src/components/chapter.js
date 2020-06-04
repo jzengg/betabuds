@@ -9,6 +9,7 @@ import {
   hasSelection,
 } from "../services/highlights";
 import { useStateWithLocalStorage } from "../services/localStorage";
+import { debounce } from "../services/utils";
 
 const sampleBookData = {
   title: "Harry Potter and the Philosopher's Stone",
@@ -31,9 +32,15 @@ export default function Chapter() {
   const previewRef = useRef();
 
   useEffect(() => {
-    document.addEventListener("selectionchange", handleSelectionChange);
+    document.addEventListener(
+      "selectionchange",
+      debouncedHandleSelectionChange
+    );
     return () => {
-      document.removeEventListener("selectionchange", handleSelectionChange);
+      document.removeEventListener(
+        "selectionchange",
+        debouncedHandleSelectionChange
+      );
     };
   }, []);
 
@@ -117,6 +124,8 @@ export default function Chapter() {
     }
     setSelection(selectionOffsets);
   };
+
+  const debouncedHandleSelectionChange = debounce(handleSelectionChange, 200);
 
   const resetCurrentSelection = (e) => {
     window.getSelection().removeAllRanges();
