@@ -37,15 +37,6 @@ export default function Chapter() {
     };
   }, []);
 
-  const handleSelectionChange = (e) => {
-    if (hasSelection()) {
-      const selectionOffsets = getSelectionOffsets(previewRef.current);
-      setSelection({ ...selectionOffsets });
-    } else {
-      setSelection(null);
-    }
-  };
-
   useEffect(() => {
     fetch(chapter1)
       .then((response) => {
@@ -117,6 +108,14 @@ export default function Chapter() {
     } else {
       setCurrentHighlightId(null);
     }
+  };
+
+  const handleSelectionChange = (e) => {
+    let selectionOffsets = null;
+    if (hasSelection()) {
+      selectionOffsets = getSelectionOffsets(previewRef.current);
+    }
+    setSelection(selectionOffsets);
   };
 
   const resetCurrentSelection = (e) => {
